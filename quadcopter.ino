@@ -163,9 +163,21 @@ void dmpDataReady() {
 }
 
 // blinkLed demo function
-void analogLight(int pin, int rate) {
+void analogLight1(int pin, int rate) {
   rate = abs(rate);
-  int freq = map(rate,0,180,255,0);
+  int freq = map(rate,-180,180,255,0);
+  analogWrite(pin,freq);
+}
+
+void analogLight2(int pin, int rate) {
+  rate = abs(rate);
+  int freq = map(rate,-30,90,255,0);
+  analogWrite(pin,freq);
+}
+
+void analogLight3(int pin, int rate) {
+  rate = abs(rate);
+  int freq = map(rate,-50,50,255,0);
   analogWrite(pin,freq);
 }
 
@@ -349,9 +361,9 @@ void loop() {
         #endif
         
         #ifdef LEDDEMO_YAWPITCHROLL
-            analogLight(ledPin1, ypr[0]);
-            analogLight(ledPin2, ypr[1]);
-            analogLight(ledPin3, ypr[2]);
+            analogLight1(ledPin1, ypr[0] * 180/M_PI);
+            analogLight2(ledPin2, ypr[1] * 180/M_PI);
+            analogLight3(ledPin3, ypr[2] * 180/M_PI);
         #endif
 
         #ifdef OUTPUT_READABLE_REALACCEL
