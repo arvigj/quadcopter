@@ -349,9 +349,9 @@ void loop() {
         #endif
         
         #ifdef LEDDEMO_YAWPITCHROLL
-            analogLight(ledPin1, ypr[0]);
-            analogLight(ledPin2, ypr[1]);
-            analogLight(ledPin3, ypr[2]);
+            analogLight(ledPin1, ypr[0] * 180/M_PI);
+            analogLight(ledPin2, ypr[1] * 180/M_PI);
+            analogLight(ledPin3, ypr[2] * 180/M_PI);
         #endif
 
         #ifdef OUTPUT_READABLE_REALACCEL
